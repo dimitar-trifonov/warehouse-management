@@ -7,6 +7,17 @@ on:
     branches: [ main ]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.0.0
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "warehouse-management-demo"
+          heroku_email: "dimitar.trifonov@abv.bg"
+          usedocker: true
+  
   laravel-tests:
 
     runs-on: ubuntu-latest
